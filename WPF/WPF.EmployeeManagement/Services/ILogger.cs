@@ -8,6 +8,7 @@ namespace WPF.EmployeeManagement.Services
 {
     public interface ILogger
     {
-        void Log(string message);
+        void WriteEvent(string eventMessage);
+        void WriteError(string errorMessage);
     }
 }

@@ -29,7 +29,7 @@ namespace WPF.EmployeeManagement.ViewModels
                 _filter = value; 
                 FillListView();
                 FillMessage();
-                _logger.Log(_filter);
+                //_logger.WriteEvent(_filter);
             }
         }
         private string _message;
@@ -43,11 +43,9 @@ namespace WPF.EmployeeManagement.ViewModels
             }
         }
         private IEmployeeRepository _employeeRepository;
-        private ILogger _logger;
-        public EmployeesViewModel(IEmployeeRepository employeeRepository, ILogger logger)
+        public EmployeesViewModel(IEmployeeRepository employeeRepository)
         {
             _employeeRepository = employeeRepository;
-            _logger = logger;
             FillListView();
             FillMessage();
         }
