@@ -47,7 +47,7 @@ namespace WPF.EmployeeManagement.ViewModels
         } 
         private void FillListView()
         {
-            if(!String.IsNullOrEmpty(Filter))
+            if(!String.IsNullOrEmpty(_filter))
             {
                 _employees= new ObservableCollection<Employee>( _employeeRepository.GetAll().Where(x => x.FirstName.Contains(_filter)));
             }

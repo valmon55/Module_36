@@ -11,7 +11,7 @@
         <vm:EmployeesViewModel></vm:EmployeesViewModel>
     </Window.DataContext>
     <Grid>
-        <ListView PreviewMouseDoubleClick="ListView_PreviewMouseDoubleClick" ItemsSource="{Binding employees, UpdateSourceTrigger = PropertyChanged}" Margin="0,49,0,224">
+        <ListView PreviewMouseDoubleClick="ListView_PreviewMouseDoubleClick" ItemsSource="{Binding Employees, UpdateSourceTrigger = PropertyChanged}" Margin="0,49,0,224">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="auto" DisplayMemberBinding="{Binding LastName}">
