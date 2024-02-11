@@ -11,7 +11,7 @@ using WPF.EmployeeManagement.Model;
 
 namespace WPF.EmployeeManagement.ViewModels
 {
-    public class EmployeesViewModel : INotifyPropertyChanged
+    public class EmployeesViewModel : INotifyPropertyChanged, IEmployeesViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -19,7 +19,6 @@ namespace WPF.EmployeeManagement.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
-        private EmployeeRepository _employeeRepository;
         private string _filter;
         public string Filter 
         {
@@ -41,9 +40,10 @@ namespace WPF.EmployeeManagement.ViewModels
                 OnPropertyChanged();
             }
         }
-        public EmployeesViewModel()
-        { 
-            _employeeRepository= new EmployeeRepository();
+        private IEmployeeRepository _employeeRepository;
+        public EmployeesViewModel(IEmployeeRepository employeeRepository)
+        {
+            _employeeRepository = employeeRepository;
             FillListView();
             FillMessage();
         }

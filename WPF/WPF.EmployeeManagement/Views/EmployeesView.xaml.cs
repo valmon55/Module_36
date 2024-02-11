@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WPF.EmployeeManagement.Model;
+using WPF.EmployeeManagement.ViewModels;
 
 namespace WPF.EmployeeManagement.Views
 {
@@ -20,9 +21,14 @@ namespace WPF.EmployeeManagement.Views
     /// </summary>
     public partial class EmployeesView : Window
     {
-        public EmployeesView()
+        IEmployeeRepository _employeeRepository;
+        IEmployeesViewModel _employeesViewModel;
+        public EmployeesView(IEmployeesViewModel employeesViewModel, IEmployeeRepository employeeRepository)
         {
+            _employeesViewModel = employeesViewModel;
+            _employeeRepository = employeeRepository;
             InitializeComponent();
+            DataContext= _employeesViewModel;
         }
 
         private void ListView_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
