@@ -28,12 +28,24 @@ namespace WPF.EmployeeManagement.ViewModels
             { 
                 _filter = value; 
                 FillListView();
+                FillMessage();
+            }
+        }
+        private string _message;
+        public string Message
+        {
+            get { return _message; }
+            set
+            {
+                _message = value;
+                OnPropertyChanged();
             }
         }
         public EmployeesViewModel()
         { 
             _employeeRepository= new EmployeeRepository();
             FillListView();
+            FillMessage();
         }
         public ObservableCollection<Employee> _employees;
         public ObservableCollection<Employee> Employees
@@ -57,6 +69,17 @@ namespace WPF.EmployeeManagement.ViewModels
             else 
             {
                 Employees = new ObservableCollection<Employee>(_employeeRepository.GetAll());
+            }
+        }
+        private void FillMessage()
+        {
+            if(!String.IsNullOrEmpty(_filter) ) 
+            { 
+                Message = $"По вашему запросу найдено {Employees.Count()} записей.";
+            }
+            else
+            {
+                Message = "Введите данные для поиска.";
             }
         }
     }
