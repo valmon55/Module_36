@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WPF.EmployeeManagement.Model;
+using WPF.EmployeeManagement.Services;
 using WPF.EmployeeManagement.ViewModels;
 
 namespace WPF.EmployeeManagement.Views
@@ -23,10 +24,12 @@ namespace WPF.EmployeeManagement.Views
     {
         IEmployeeRepository _employeeRepository;
         IEmployeesViewModel _employeesViewModel;
-        public EmployeesView(IEmployeesViewModel employeesViewModel, IEmployeeRepository employeeRepository)
+        ILogger _logger;
+        public EmployeesView(IEmployeesViewModel employeesViewModel, IEmployeeRepository employeeRepository, ILogger logger)
         {
             _employeesViewModel = employeesViewModel;
             _employeeRepository = employeeRepository;
+            _logger = logger;
             InitializeComponent();
             DataContext= _employeesViewModel;
         }

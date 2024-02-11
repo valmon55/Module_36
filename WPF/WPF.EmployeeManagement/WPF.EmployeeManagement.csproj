@@ -70,6 +70,8 @@
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\EmployeeRepository.cs" />
     <Compile Include="Model\IEmployeeRepository.cs" />
+    <Compile Include="Services\ILogger.cs" />
+    <Compile Include="Services\Logger.cs" />
     <Compile Include="ViewModels\EmployeesViewModel.cs" />
     <Compile Include="ViewModels\IEmployeesViewModel.cs" />
     <Compile Include="Views\EmployeesView.xaml.cs">
