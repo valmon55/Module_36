@@ -32,7 +32,6 @@ namespace WPF.EmployeeManagement.ViewModels
             FillListView();
         }
         public ObservableCollection<Employee> _employees;
-
         public ObservableCollection<Employee> Employees
         { 
             get
