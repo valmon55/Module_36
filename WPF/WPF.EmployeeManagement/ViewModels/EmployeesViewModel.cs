@@ -24,7 +24,11 @@ namespace WPF.EmployeeManagement.ViewModels
         public string Filter 
         {
             get { return _filter; }    
-            set { _filter = value; }
+            set 
+            { 
+                _filter = value; 
+                FillListView();
+            }
         }
         public EmployeesViewModel()
         { 
@@ -48,11 +52,11 @@ namespace WPF.EmployeeManagement.ViewModels
         {
             if(!String.IsNullOrEmpty(_filter))
             {
-                _employees= new ObservableCollection<Employee>( _employeeRepository.GetAll().Where(x => x.FirstName.Contains(_filter)));
+                Employees = new ObservableCollection<Employee>( _employeeRepository.GetAll().Where(x => x.FirstName.Contains(_filter)));
             }
             else 
             {
-                _employees = new ObservableCollection<Employee>(_employeeRepository.GetAll());
+                Employees = new ObservableCollection<Employee>(_employeeRepository.GetAll());
             }
         }
     }
