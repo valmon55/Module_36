@@ -24,6 +24,7 @@ namespace WPF.EmployeeManagement
 
             IUnityContainer unityContainer = new UnityContainer();
             
+            unityContainer.RegisterType<IEmployeeViewModel, EmployeeViewModel>();
             unityContainer.RegisterType<IEmployeeRepository,EmployeeRepository>();
             unityContainer.RegisterType<IEmployeesViewModel,EmployeesViewModel>();
             unityContainer.RegisterType<ILogger,Logger>();

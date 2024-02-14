@@ -22,14 +22,13 @@ namespace WPF.EmployeeManagement.Views
     /// </summary>
     public partial class EmployeesView : Window
     {
-        IEmployeeRepository _employeeRepository;
+        IEmployeeViewModel _employeeViewModel;
         IEmployeesViewModel _employeesViewModel;
-        ILogger _logger;
-        public EmployeesView(IEmployeesViewModel employeesViewModel, IEmployeeRepository employeeRepository, ILogger logger)
+        //ILogger _logger;
+        public EmployeesView(IEmployeesViewModel employeesViewModel, IEmployeeViewModel employeeViewModel)
         {
             _employeesViewModel = employeesViewModel;
-            _employeeRepository = employeeRepository;
-            _logger = logger;
+            _employeeViewModel = employeeViewModel;
             InitializeComponent();
             DataContext= _employeesViewModel;
         }
@@ -43,9 +42,12 @@ namespace WPF.EmployeeManagement.Views
             }
 
             var employee = item as Employee;
-
-            MessageBox.Show($"{employee.LastName} \n\r {employee.FirstName} \n\r {employee.Age.ToString()} \n\r" +
-                $"{employee.Position} \n\r {employee.CompanyName} \n\r {employee.CityName}");
+            _employeeViewModel.Employee = employee;
+            //_logger.WriteEvent(employee.FirstName);
+            //MessageBox.Show($"{employee.LastName} \n\r {employee.FirstName} \n\r {employee.Age.ToString()} \n\r" +
+            //    $"{employee.Position} \n\r {employee.CompanyName} \n\r {employee.CityName}");
+            var employeeView = new EmployeeView(_employeeViewModel);
+            employeeView.Show();
         }
     }
 }
